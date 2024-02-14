@@ -5,6 +5,10 @@
     
     "routes": [
         {
+            "src": "/assets/(imgs|js|css)/(.*)",
+            "dest": "/public/assets/(imgs|js|css)/(.*)"
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
