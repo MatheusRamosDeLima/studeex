@@ -1,0 +1,185 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 70px;
+    --footer-height: 40px;
+    --strong-bg-color: #181818;
+    --medium-bg-color: #202020;
+    --weak-bg-color: #252525;
+    --menu-list-width: 60vw;
+    --menu-list-invisible-width: 0px;
+    --main-height: calc(100vh - (var(--header-height) + var(--footer-height)));
+}
+
+body {
+    color: white;
+}
+
+header {
+    height: var(--header-height);
+    background-color: var(--strong-bg-color);
+    padding: 5px 8px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+
+#header-title {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    color: #3FB9DC;
+    text-decoration: none;
+}
+
+#header-title h1 {
+    font-size: 40px;
+}
+
+#menu-button {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#menu-button div {
+    width: 35px;
+    height: 4px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+#menu-list {
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    position: absolute;
+    left: 0;
+    top: var(--header-height);
+
+    background-color: var(--strong-bg-color);
+    width: var(--menu-list-invisible-width);
+    height: calc(100vh - var(--header-height));
+    padding: 5px 8px;
+
+    list-style-type: none;
+}
+
+#menu-list.list-visible {
+    display: flex;
+    width: var(--menu-list-width);
+}
+
+#menu-list a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-decoration: none;
+}
+
+#menu-list a .list-icon {
+    width: 40px;
+}
+
+#menu-list a .list-name {
+    color: white;
+}
+
+#menu-list a .list-name, #menu-list a .list-name.list-visible {
+    display: block;
+}
+
+main {
+    min-height: calc(100vh - (var(--footer-height) + var(--header-height)));
+    margin-top: var(--header-height);
+    background-color: var(--weak-bg-color);
+    display: flex;
+    justify-content: end;
+}
+
+#main-content, #main-content.list-visible {
+    width: calc(100vw - var(--menu-list-invisible-width));
+}
+
+footer {
+    width: 100vw;
+    height: var(--footer-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--strong-bg-color);
+}
+
+#dark-background-div {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    width: calc(100vw - var(--menu-list-width));
+    height: calc(100vh - var(--header-height));
+    background-color: rgba(0, 0, 0, .6);
+    display: none;
+}    
+
+#dark-background-div.list-visible {
+    display: block;
+}
+
+#copyright {
+    text-align: center;
+}
+
+@media only screen and (min-width: 575px) {
+    :root {
+        --menu-list-width: 36vw;
+    }
+}
+
+@media only screen and (min-width: 1050px) {
+    :root {
+        --menu-list-width: 16vw;
+        --menu-list-invisible-width: 65px;
+    }
+
+    #menu-list {
+        display: flex;
+        min-width: 0;
+    }
+    
+    #menu-list.list-visible {
+        width: var(--menu-list-width);
+        min-width: 200px;
+    }
+
+    #menu-list a .list-name {
+        display: none;
+    }
+
+    #menu-list a .list-name.list-visible {
+        display: block;
+    }
+
+    #main-content.list-visible {
+        width: calc(100vw - var(--menu-list-width));
+    }
+
+    #dark-background-div, #dark-background-div.list-visible {
+        display: none;
+    }
+}
